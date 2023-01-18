@@ -1,0 +1,11 @@
+@import "_nullstyle";
+@import "_variables";
+@import "_fonts";
+@import "_mixins";
+@import "_ui-kit";
+@import "../blocks/blocks.scss";
+
+body {
+  font: $body_text;
+  color: $dark_shade_50;
+}

@@ -1,0 +1,21 @@
+.colors {
+  display: flex;
+  flex-direction: column;
+  gap: rs(20);
+}
+.color-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: rs(40);
+  &__box {
+    width: rs(70);
+    height: rs(70);
+    border-radius: rs(6);
+  }
+  &__description {
+    font-size: 19px;
+    line-height: 28px;
+    color: $dark_shade_100;
+  }
+}

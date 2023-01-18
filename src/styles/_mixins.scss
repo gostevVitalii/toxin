@@ -1,0 +1,19 @@
+//RESPONSIVE SIZE
+@function rs($px) {
+  @return ($px/14.4) + vw;
+}
+
+@mixin btnSize($size) {
+  height: rs($size);
+  border-radius: rs($size/2);
+}
+@mixin labelFont {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+
+  text-transform: uppercase;
+
+  color: $dark_shade_100;
+}
