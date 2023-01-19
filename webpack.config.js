@@ -65,6 +65,10 @@ const config = {
       template: path.join(__dirname, 'src/pug/ui-kit', 'colors.pug'),
       filename: 'colors.html',
     }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src/pug/ui-kit', 'headers-footers.pug'),
+      filename: 'headers-footers.html',
+    }),
     new MiniCssExtractPlugin()
   ],
   devServer: {

@@ -1,2 +1,18 @@
-mixin header 
-  h1 Header 
+mixin header(mod='unsubscribed') 
+  div(class=`header header_${mod}`)
+    a.header__logo 
+      img(src="../../assets/img/logo.svg", width='99px', height='44px', alt="")
+    nav.header__menu 
+      a.header__menu-item(href="#") О нас
+      a.header__menu-item(href="#") Услуги
+      a.header__menu-item(href="#") Вакансии
+      a.header__menu-item(href="#") Новости
+      a.header__menu-item(href="#") Соглашение
+
+
+
+    .header__buttons 
+      +btn('Войти')
+      +btn('Зарегистрироваться', 'normal_disabled')
+    .header__user
+

@@ -7,15 +7,16 @@
     {name: 'Dark Shade 25%', description: '#1F2041', color: 'rgba(31, 32, 65, 0.25);'},
     {name: 'Dark Shade 5%', description: '#1F2041', color: 'rgba(31, 32, 65, 0.05);'},
     {name: 'Purple', description: '#BC9CFF', color: '#BC9CFF'},
-    {name: 'Green', description: '#6FCF97', color: '#BC9CFF'}];
+    {name: 'Green', description: '#6FCF97', color: '#6FCF97'}];
 
 include ../template.pug
-.colors 
-  each color in colors  
-    .color-card 
-      .color-card__box(style=`background: ${color.color}`)
-      .color-card__description 
-        b= color.name 
-        br
-        =color.description
+.ui-kit
+  .colors 
+    each color in colors  
+      .color-card 
+        .color-card__box(style=`background: ${color.color}`)
+        .color-card__description 
+          b= color.name 
+          br
+          =color.description
 
