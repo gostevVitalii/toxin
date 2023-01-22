@@ -1,0 +1,10 @@
+-var title = 'Form elements'
+include ../template.pug
+-
+  var checkboxGroupItems = [{text: 'Можно курить', name:'smoke'},
+  {text: 'Можно с питомцами', name:'pets'},
+  {text: 'Можно пригласить гостей (до 10 человек)', name:'guests'},]
+
+
++text-input('text', 'name', 'Your name')
++checkbox-group('Checkbox Buttons', checkboxGroupItems)

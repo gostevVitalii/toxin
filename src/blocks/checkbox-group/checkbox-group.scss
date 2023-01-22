@@ -1,0 +1,8 @@
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  &__header {
+    margin-bottom: 0.375rem;
+  }
+}

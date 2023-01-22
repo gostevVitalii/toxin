@@ -51,7 +51,7 @@ const config = {
         type: 'asset/inline',
       },
       {
-        test: /\.png$/,
+        test: /\.(png|svg)$/,
         type: 'asset/resource',
       }
     ]
@@ -64,6 +64,10 @@ const config = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src/pug/ui-kit', 'colors.pug'),
       filename: 'colors.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src/pug/ui-kit', 'form-elements.pug'),
+      filename: 'form-elements.html',
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src/pug/ui-kit', 'headers-footers.pug'),
