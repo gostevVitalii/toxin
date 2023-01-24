@@ -8,6 +8,10 @@
 const fs = require('fs');
 
 const dir = './src/blocks/';
+const pug = './src/blocks/blocks.pug';
+const styles = './src/blocks/blocks.scss';
+const scripts = './src/blocks/blocks.js';
+
 const mkdirp = require('mkdirp');
 
 const blockName = process.argv[2];
@@ -16,7 +20,7 @@ const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
 
 // Если есть имя блока
 if (blockName) {
-  const dirPath = `${dir.blocks}${blockName}/`; // полный путь к создаваемой папке блока
+  const dirPath = `${dir}/${blockName}/`; // полный путь к создаваемой папке блока
 
   const made = mkdirp.sync(dirPath);
   console.log(`[NTH] Создание папки: ${made}`);
@@ -28,12 +32,17 @@ if (blockName) {
     let fileCreateMsg = '';                                 // будущее сообщение в консоли при создании файла
 
     if (extension === 'scss') {
-      fileContent = `// В этом файле должны быть стили для БЭМ-блока ${blockName}, его элементов,\n// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...\n// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority\n\n.${blockName} {\n\n  $block-name:                &; // #{$block-name}__element\n}\n`;
-      // fileCreateMsg = '';
+      fileContent = `.${blockName} {\n\n  $block-name:                &; // #{$block-name}__element\n}\n`;
+      fs.appendFile(styles, `@import "./${blockName}/${blockName}.scss";`, function (error) {
+        if (error) throw error; // если возникла ошибка
+      });
     }
 
     else if (extension === 'js') {
       fileContent = `/* global document */\n\n// import ready from 'Utils/documentReady.js';\n\n// ready(function() {\n//   \n// });\n`;
+      fs.appendFile(scripts, `import './${blockName}/${blockName}'`, function (error) {
+        if (error) throw error; // если возникла ошибка
+      });
     }
 
     else if (extension === 'md') {
@@ -42,16 +51,9 @@ if (blockName) {
 
     else if (extension === 'pug') {
       fileContent = `//- Все примеси в этом файле должны начинаться c имени блока (${blockName})\n\nmixin ${blockName}(text, mods)\n\n  //- Принимает:\n  //-   text    {string} - текст\n  //-   mods    {string} - список модификаторов\n  //- Вызов:\n        +${blockName}('Текст', 'some-mod')\n\n  -\n    // список модификаторов\n    var allMods = '';\n    if(typeof(mods) !== 'undefined' && mods) {\n      var modsList = mods.split(',');\n      for (var i = 0; i < modsList.length; i++) {\n        allMods = allMods + ' ${blockName}--' + modsList[i].trim();\n      }\n    }\n\n  .${blockName}(class=allMods)&attributes(attributes)\n    .${blockName}__inner\n      block\n`;
-    }
-
-    else if (extension === 'img') {
-      const imgFolder = `${dirPath}img/`;
-      if (fileExist(imgFolder) === false) {
-        const made = mkdirp.sync(imgFolder);
-        console.log(`[NTH] Создание папки: ${made}`);
-      } else {
-        console.log(`[NTH] Папка ${imgFolder} НЕ создана (уже существует) `);
-      }
+      fs.appendFile(pug, `include ./${blockName}/${blockName}.pug`, function (error) {
+        if (error) throw error; // если возникла ошибка
+      });
     }
 
     if (fileExist(filePath) === false && extension !== 'img' && extension !== 'md') {
