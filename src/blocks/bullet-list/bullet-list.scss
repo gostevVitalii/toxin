@@ -1,0 +1,12 @@
+.bullet-list {
+  max-width: 300px;
+  &__header {
+    margin-left: 1.25rem;
+  }
+  &__list {
+    list-style-type: square;
+  }
+  &__item {
+    list-style-type: square;
+  }
+}

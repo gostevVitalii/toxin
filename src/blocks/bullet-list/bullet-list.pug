@@ -1,0 +1,8 @@
+mixin bullet-list(text='bullet list', items=['first', 'second', 'third'])
+  .bullet-list 
+    h3.bullet-list__header=text 
+    ul.bullet-list__list 
+      each item in items 
+        li.bullet-list__item= item
+
+
