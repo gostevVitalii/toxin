@@ -17,6 +17,7 @@ const mkdirp = require('mkdirp');
 const blockName = process.argv[2];
 const defaultExtensions = ['scss', 'img']; // расширения по умолчанию
 const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
+const newLineChar = process.platform === 'win32' ? '\r\n' : '\n';
 
 // Если есть имя блока
 if (blockName) {
@@ -33,14 +34,14 @@ if (blockName) {
 
     if (extension === 'scss') {
       fileContent = `.${blockName} {\n\n  $block-name:                &; // #{$block-name}__element\n}\n`;
-      fs.appendFile(styles, `@import "./${blockName}/${blockName}.scss";`, function (error) {
+      fs.appendFile(styles, `${newLineChar}@import "./${blockName}/${blockName}.scss";`, function (error) {
         if (error) throw error; // если возникла ошибка
       });
     }
 
     else if (extension === 'js') {
       fileContent = `/* global document */\n\n// import ready from 'Utils/documentReady.js';\n\n// ready(function() {\n//   \n// });\n`;
-      fs.appendFile(scripts, `import './${blockName}/${blockName}'`, function (error) {
+      fs.appendFile(scripts, `${newLineChar}import './${blockName}/${blockName}'`, function (error) {
         if (error) throw error; // если возникла ошибка
       });
     }
@@ -51,7 +52,7 @@ if (blockName) {
 
     else if (extension === 'pug') {
       fileContent = `//- Все примеси в этом файле должны начинаться c имени блока (${blockName})\n\nmixin ${blockName}(text, mods)\n\n  //- Принимает:\n  //-   text    {string} - текст\n  //-   mods    {string} - список модификаторов\n  //- Вызов:\n        +${blockName}('Текст', 'some-mod')\n\n  -\n    // список модификаторов\n    var allMods = '';\n    if(typeof(mods) !== 'undefined' && mods) {\n      var modsList = mods.split(',');\n      for (var i = 0; i < modsList.length; i++) {\n        allMods = allMods + ' ${blockName}--' + modsList[i].trim();\n      }\n    }\n\n  .${blockName}(class=allMods)&attributes(attributes)\n    .${blockName}__inner\n      block\n`;
-      fs.appendFile(pug, `include ./${blockName}/${blockName}.pug`, function (error) {
+      fs.appendFile(pug, `${newLineChar}include ./${blockName}/${blockName}.pug`, function (error) {
         if (error) throw error; // если возникла ошибка
       });
     }

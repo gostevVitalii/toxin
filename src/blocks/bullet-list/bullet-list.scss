@@ -4,9 +4,10 @@
     margin-left: 1.25rem;
   }
   &__list {
-    list-style-type: square;
+    list-style: disc;
   }
   &__item {
-    list-style-type: square;
+    list-style: square;
+    padding-left: 20px;
   }
 }
