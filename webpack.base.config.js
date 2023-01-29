@@ -3,13 +3,21 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PATHS = {
+  src: path.join(__dirname, './src'),
+  dist: path.join(__dirname, './dist'),
+  assets: 'assets/',
+
+}
 
 
 const config = {
-  mode: "development",
-  entry: './src/index.js',
+  externals: {
+    paths: PATHS
+  },
+  entry: PATHS.src,
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: PATHS.dist,
     filename: '[name].js',
     clean: true
   },
@@ -73,13 +81,13 @@ const config = {
       template: path.join(__dirname, 'src/pug/ui-kit', 'headers-footers.pug'),
       filename: 'headers-footers.html',
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    })
   ],
-  devServer: {
-    watchFiles: path.join(__dirname, 'src'),
-    port: 9000,
-    hot: true,
-  },
+
 };
 
 module.exports = config;
