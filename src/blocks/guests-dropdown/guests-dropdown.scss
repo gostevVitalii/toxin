@@ -1,0 +1,16 @@
+.guests-dropdown {
+  max-width: rs(320);
+  &__header {
+    margin-bottom: 0.3125rem;
+  }
+  &__body {
+    border-radius: rs(4);
+  }
+  &__btn {
+    height: rs(44);
+    border: 1px solid $dark_shade_50;
+  }
+  &__expand {
+    border: 1px solid $dark_shade_50;
+  }
+}

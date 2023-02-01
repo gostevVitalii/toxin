@@ -12,10 +12,26 @@
   &_normal {
     color: $white;
     background: $primary-gradient;
+    &:disabled {
+      color: white;
+      background: $primary-gradient;
+      opacity: 50%;
+    }
+    &:hover {
+      background: $purple;
+    }
   }
-  &_normal_disabled {
-    color: white;
-    background: $primary-gradient;
-    opacity: 50%;
+  &_border {
+    border: 2px solid $purple;
+    color: $purple;
+    background: transparent;
+    &:disabled {
+      color: white;
+      background: $primary-gradient;
+      opacity: 50%;
+    }
+    &:hover {
+      color: darken($purple, 10%);
+    }
   }
 }
