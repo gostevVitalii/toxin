@@ -1,4 +1,32 @@
 .header {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+    margin-right: 1.25rem;
+    &-item {
+      color: $dark_shade_50;
+    }
+    &-item:first-child {
+      color: $dark_shade_75;
+      font-weight: 700;
+    }
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+  }
 }

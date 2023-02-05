@@ -1,17 +1,16 @@
 mixin header(mod='unsubscribed') 
-  div(class=`header header_${mod}`)
+  div(class=`header header_${mod} container`)
     +logo()
-    nav.header__menu 
-      a.header__menu-item(href="#") О нас
-      a.header__menu-item(href="#") Услуги
-      a.header__menu-item(href="#") Вакансии
-      a.header__menu-item(href="#") Новости
-      a.header__menu-item(href="#") Соглашение
+    .header__menu
+      nav.header__nav 
+        a.header__nav-item(href="#") О нас
+        a.header__nav-item(href="#") Услуги
+        a.header__nav-item(href="#") Вакансии
+        a.header__nav-item(href="#") Новости
+        a.header__nav-item(href="#") Соглашение
 
-
-
-    .header__buttons 
-      +btn('Войти')
-      +btn('Зарегистрироваться', 'normal_disabled')
-    .header__user
+      .header__buttons 
+        +btn('Войти','border')
+        +btn('Зарегистрироваться')
+      .header__user
 
