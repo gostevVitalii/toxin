@@ -1,5 +1,5 @@
-mixin checkbox-group(header='Checkbox group', items=[{text:'checkbox', name:'name'}])
+mixin checkbox-group(title='Checkbox group', items=[{text:'checkbox', name:'name'}])
   .checkbox-group 
-    h3.checkbox-group__header= header 
+    h3.checkbox-group__title= title 
     each item in items
       +checkbox(item.text, item.name)

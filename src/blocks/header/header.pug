@@ -1,7 +1,6 @@
 mixin header(mod='unsubscribed') 
   div(class=`header header_${mod}`)
-    a.header__logo 
-      img(src="../../assets/img/logo.svg", width='99px', height='44px', alt="")
+    +logo()
     nav.header__menu 
       a.header__menu-item(href="#") О нас
       a.header__menu-item(href="#") Услуги

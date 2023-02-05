@@ -4,11 +4,14 @@ include ../template.pug
   var checkboxGroupItems = [{text: 'Можно курить', name:'smoke'},
   {text: 'Можно с питомцами', name:'pets'},
   {text: 'Можно пригласить гостей (до 10 человек)', name:'guests'},]
+-
+  var radioBtns = [{text:'Мужчина', name: 'sex', value: 'male'}, 
+  {text:'Женщина', name: 'sex', value: 'female'}]
 
 
 +text-input('text', 'name', 'Your name')
 +checkbox-group('Checkbox Buttons', checkboxGroupItems)
-+radio()
++radio-btns(radioBtns)
 +bullet-list('Правила', ['Нельзя с питомцами',
   'Без вечеринок и мероприятий', 
   'Время прибытия — после 13:00, \n а выезд до 12:00'])

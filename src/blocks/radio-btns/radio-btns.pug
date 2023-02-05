@@ -1,0 +1,5 @@
+mixin radio-btns(items=[])
+  .radio-btns
+    each item in items
+      +radio(item.text, item.name, item.value )
+
